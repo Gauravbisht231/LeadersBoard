@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-
+const serverUrl= process.env.REACT_APP_API;
 const UserRank = ({ userId }) => {
     const [data, setData] = useState({ rank: null });
   
     useEffect(() => {
       // rank use karni hai
-      fetch(`http://localhost:3000/user/rank/${userId}`)
+      fetch(`${serverUrl}/user/rank/${userId}`)
         .then(response => response.json())
         .then(data => setData(data))
         .catch(error => console.error('Error fetching user rank:', error));

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-
+const serverUrl= process.env.REACT_APP_API;
 const CurrentWeekLeaderboard = () => {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:3000/leaderboard/current-week')
+        fetch(`${serverUrl}/leaderboard/current-week`)
             .then(response => response.json())
             .then(data => setData(data))
             .catch(error => console.error('Error fetching current week leaderboard:', error));

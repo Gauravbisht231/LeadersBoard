@@ -1,6 +1,6 @@
 // src/components/Leaderboard/LastWeekLeaderboard.js
 import React, { useState, useEffect } from 'react';
-
+const serverUrl= process.env.REACT_APP_API;
 const LastWeekLeaderboard = ({country}) => {
     const [data, setData] = useState([]);
 
@@ -9,7 +9,7 @@ const LastWeekLeaderboard = ({country}) => {
             console.log('Pleaes Enter Country code');
             return;
         }
-        fetch(`http://localhost:3000/leaderboard/last-week/${country}`)
+        fetch(`${serverUrl}/leaderboard/last-week/${country}`)
             .then(response => response.json())
             .then(data => setData(data))
             .catch(error => console.error('Error fetching last week leaderboard:', error));
