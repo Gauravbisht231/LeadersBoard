@@ -22,43 +22,21 @@ connection.connect((err) => {
   console.log("Connected to server");
 });
 // current week  leaderboard
-// app.get('/leaderboard/current-week', (req, res)=>{
-//   const query= `SELECT UID, Name, Score, Country, TimeStamp 
-//   FROM people
-//   WHERE TimeStamp >= CURDATE() - INTERVAL DAY(CURDATE()) -1 DAY
-//   ORDER BY Score DESC
-//   LIMIT 200;`;
-//   connection.query(query, (err,results)=>{
-//     if(err) {
-//         console.log("Error fetching this Week's Leaderboard, Try again later.....");
-//         res.status(500).json({error: "Internal Server Error"});
-//         return;
-//     }
-//     res.json(results);
-//   });
-// });
-app.get('/leaderboard/current-week', (req, res) => {
-  const query = `
-    SELECT UID, Name, Score, Country, TimeStamp 
-    FROM people
-    WHERE WEEK(TimeStamp) = WEEK(NOW())
-    ORDER BY Score DESC
-    LIMIT 200;
-  `;
-
-  connection.query(query, (err, results) => {
-    if (err) {
-      console.error('Error querying database:', err);
-      res.status(500).json({ error: 'Internal server error' });
-      return;
+app.get('/leaderboard/current-week', (req, res)=>{
+  const query= `SELECT UID, Name, Score, Country, TimeStamp 
+  FROM people
+  WHERE TimeStamp >= CURDATE() - INTERVAL DAY(CURDATE()) -1 DAY
+  ORDER BY Score DESC
+  LIMIT 200;`;
+  connection.query(query, (err,results)=>{
+    if(err) {
+        console.log("Error fetching this Week's Leaderboard, Try again later.....");
+        res.status(500).json({error: "Internal Server Error"});
+        return;
     }
     res.json(results);
   });
 });
-
-
-
-
 
 
 // prev week leaders
