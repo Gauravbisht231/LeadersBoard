@@ -23,7 +23,7 @@ connection.connect((err) => {
 });
 // current week  leaderboard
 app.get('/leaderboard/current-week', (req, res)=>{
-  const query= `SELECT UID, Name, Score, Country, DATE_FORMAT(TimeStamp, '%Y-%m-%d') as FormattedTimeStamp
+  const query= `SELECT UID, NAME, Score, Country, DATE_FORMAT(TimeStamp, '%Y-%m-%d') as FormattedTimeStamp
   FROM people
   WHERE DATE_FORMAT(TimeStamp, '%Y-%m-%d') >= CURDATE() - INTERVAL DAYOFWEEK(CURDATE()) + 5 DAY
   AND DATE_FORMAT(TimeStamp, '%Y-%m-%d') < CURDATE() - INTERVAL DAYOFWEEK(CURDATE()) - 1 DAY

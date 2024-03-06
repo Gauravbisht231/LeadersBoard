@@ -33,7 +33,7 @@ const CurrentWeekLeaderboard = () => {
                                 <td className="border p-2">{entry.NAME}</td>
                                 <td className="border p-2">{entry.Score}</td>
                                 <td className="border p-2">{entry.Country}</td>
-                                <td className="border p-2">{entry.TimeStamp}</td>
+                                <td className="border p-2">{entry.FormattedTimeStamp}</td>
                             </tr>
                         ))}
                     </tbody>
