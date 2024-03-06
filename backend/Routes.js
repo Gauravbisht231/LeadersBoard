@@ -39,9 +39,9 @@ connection.connect((err) => {
 // });
 app.get('/leaderboard/current-week', (req, res) => {
   const query = `
-    SELECT *
-    FROM score_card
-    WHERE WEEK(Timestamp) = WEEK(NOW())
+    SELECT UID, Name, Score, Country, TimeStamp 
+    FROM people
+    WHERE WEEK(TimeStamp) = WEEK(NOW())
     ORDER BY Score DESC
     LIMIT 200;
   `;
