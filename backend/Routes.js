@@ -25,7 +25,8 @@ connection.connect((err) => {
 app.get('/leaderboard/current-week', (req, res)=>{
   const query= `SELECT UID, Name, Score, Country, TimeStamp 
   FROM people
-  WHERE TimeStamp >= CURDATE() - INTERVAL DAY(CURDATE()) -1 DAY
+  WHERE TimeStamp >= CURDATE() - INTERVAL DAYOFWEEK(CURDATE()) + 5 DAY
+  AND TimeStamp < CURDATE() - INTERVAL DAYOFWEEK(CURDATE()) - 1 DAY
   ORDER BY Score DESC
   LIMIT 200;`;
   connection.query(query, (err,results)=>{
