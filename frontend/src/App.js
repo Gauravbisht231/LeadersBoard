@@ -22,7 +22,7 @@ import UserRank from './Components/UserRank';
 
   return (
     <>
-    <div className='flex justify-center text-white my-5'>BlackLight Assessment by Gaurav Singh Bisht 👨‍💻 </div>
+    <div className='flex justify-center text-white my-5'> Leaderboard by Gaurav Singh Bisht 👨‍💻 </div>
     <div className=' flex flex-col my-10	content-center border-lime-400 rounded-sm text-white  '>
 
                                                     {/*  just another way  */}
