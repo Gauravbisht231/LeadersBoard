@@ -25,7 +25,7 @@ connection.connect((err) => {
 app.get('/leaderboard/current-week', (req, res)=>{
   const query= `SELECT UID, NAME, Score, Country, DATE_FORMAT(TimeStamp, '%Y-%m-%d') as FormattedTimeStamp
   FROM people
-  WHERE DATE_FORMAT(TimeStamp, '%Y-%m-%d') >= CURDATE() - INTERVAL DAYOFWEEK(CURDATE()) + 5 DAY
+  WHERE DATE_FORMAT(TimeStamp, '%Y-%m-%d') >= CURDATE() - INTERVAL DAYOFWEEK(CURDATE()) + 20 DAY
   AND DATE_FORMAT(TimeStamp, '%Y-%m-%d') < CURDATE() - INTERVAL DAYOFWEEK(CURDATE()) - 1 DAY
   ORDER BY Score DESC
   LIMIT 200;`;
@@ -47,7 +47,7 @@ app.get('/leaderboard/last-week/:country', (req, res) => {
     const query = `
       SELECT UID, Name, Score, Country, TimeStamp
       FROM people
-      WHERE Country = '${country}' AND TimeStamp >= CURDATE() - INTERVAL DAYOFWEEK(CURDATE()) + 5 DAY
+      WHERE Country = '${country}' AND TimeStamp >= CURDATE() - INTERVAL DAYOFWEEK(CURDATE()) + 20 DAY
       AND TimeStamp < CURDATE() - INTERVAL DAYOFWEEK(CURDATE()) - 1 DAY
       ORDER BY Score DESC
       LIMIT 200;
